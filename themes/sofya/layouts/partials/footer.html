@@ -1,0 +1,15 @@
+</div>
+  <footer class="site-footer">
+    <div class="site-footer-container">
+      <ul>
+        {{ if isset .Site.Params "github" }}
+        <li><a href="{{ .Site.Params.github }}"><img src="{{ .Site.BaseURL }}/img/github-logo.svg"></a></li> {{ end }}
+      </ul>
+    </div>
+  </footer>
+  {{ $jalaali := resources.Get "js/jalaali.js" }}
+  {{ $main := resources.Get "js/main.js" }}
+  {{ $js := slice $jalaali $main | resources.Concat "js/bundle.js" | resources.Minify }}
+  <script src="{{ $js.Permalink }}"></script>
+</body>
+</html>

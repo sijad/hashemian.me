@@ -1,0 +1,12 @@
+name = "sofya"
+license = "MIT"
+licenselink = "http://opensource.org/licenses/MIT"
+description = "A minimalist theme for Hugo."
+homepage = "https://github.com/jonathondilworth/sofya"
+tags = ["minimal", "blog"]
+features = ["menu", "icons"]
+min_version = 0.13
+
+[author]
+    name = "Jonathon Dilworth"
+    homepage = "http://dilworth.me/"

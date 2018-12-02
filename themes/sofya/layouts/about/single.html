@@ -1,0 +1,8 @@
+{{ partial "header.html" . }}
+<main>
+<section class="about">
+  <img src="{{ .Site.BaseURL }}img/me.jpg" class="profile-photo">
+  {{ .Content }}
+</section>
+</main>
+{{ partial "footer.html" . }}

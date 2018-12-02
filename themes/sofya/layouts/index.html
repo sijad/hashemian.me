@@ -1,0 +1,11 @@
+{{ partial "header.html" . }}
+  <main>
+    {{ range .Pages }}
+    <article class="post">
+    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    <p>{{ .Summary }}</p>
+    <p class="spacious"><a href="{{ .Permalink }}">ادامه »</a></p>
+    </article>
+    {{ end }}
+  </main>
+{{ partial "footer.html" . }}
