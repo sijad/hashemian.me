@@ -1,6 +1,6 @@
 {{ partial "header.html" . }}
   <main>
-    {{ range .Pages }}
+    {{ range (.Paginate (where .Pages "Type" "post") 5).Pages }}
     <article class="post">
     <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
     <p>{{ .Summary }}</p>
