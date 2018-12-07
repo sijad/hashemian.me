@@ -2,3 +2,6 @@
 	path = public
 	url = git@github.com:sijad/sijad.github.io.git
 	branch = master
+[submodule "themes/kiera"]
+	path = themes/kiera
+	url = https://github.com/avianto/hugo-kiera.git

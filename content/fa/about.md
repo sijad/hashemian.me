@@ -1,7 +1,8 @@
 ---
-title: "About"
+title: "درباره"
 date: 2018-12-02T13:04:14+03:30
-draft: true
+menu: "main"
+meta: false
 ---
 
 سلام، من سجادم.

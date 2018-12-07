@@ -1,0 +1,12 @@
+</main>
+    <footer>
+      <h6>© {{ dateFormat "2006" now }} <a href="{{ relURL "/" }}">{{ .Site.Title | markdownify }}</a></h6>
+    </footer>
+</div>
+{{ $jalaali := resources.Get "js/jalaali.js" }}
+{{ $main := resources.Get "js/main.js" }}
+{{ $js := slice $jalaali $main | resources.Concat "js/bundle.js" | resources.Minify }}
+<script src="{{ $js.Permalink }}"></script>
+</body>
+
+</html>

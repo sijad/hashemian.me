@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="{{ .Site.LanguageCode | default "en" }}"{{ if eq .Site.Language.Lang "fa" }} dir="rtl"{{ end }}>
+
+  <head>
+    <title>{{ .Site.Title }}</title>
+    {{ partial "meta" . }}
+    {{ partial "header_includes" . -}}
+  </head>
+  {{$curLanguageName := .Site.Language.LanguageName }}
+
+  <body>
+    <div id="container">
+      <header>
+        <h1>
+          <a href="{{ relURL "/" }}">{{ .Site.Title | markdownify }}</a>
+        </h1>
+        <ul id="social-media">
+          {{ if .Site.Author.github }}
+          <li><a href="https://github.com/{{ .Site.Author.github }}"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
+          {{ end }}
+          {{ range .Site.Languages -}}
+          {{ if ne .LanguageName $curLanguageName }}
+          <div class="lang-switch col-xs-3 col-xs-offset-9">
+            <a href="/{{ .Lang }}">{{ .LanguageName }}</a>
+          </div>
+          {{ end }}
+          {{ end }}
+        </ul>
+        {{ with .Site.Params.tagline }}
+        <p><em>{{ . | markdownify }}</em></p>
+        {{ end }}
+      </header>
+
+      {{ partial "nav" . }}
+
+      <main>

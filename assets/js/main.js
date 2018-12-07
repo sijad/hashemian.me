@@ -13,7 +13,7 @@ var months = [
   'اسفند',
 ];
 
-document.querySelectorAll("time").forEach(function(e) {
+document.querySelectorAll("[dir=\"rtl\"] time").forEach(function(e) {
   var datetime = e.getAttribute("datetime").split("-").map(function(t) {
     return parseInt(t, 10);
   });

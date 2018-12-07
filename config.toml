@@ -1,27 +1,27 @@
 baseURL = "https://hashemian.me/"
-languageCode = "fa-ir"
-title = "وبلاگ من"
-theme = "sofya"
+languageCode = "en-us"
+title = "sajjad's blog"
+theme = "kiera"
+
+[languages]
+  [languages.en]
+    contentDir = "content/en"
+    languageName = "en"
+    weight = 2
+  [languages.fa]
+  languageCode = "fa-ir"
+    contentDir = "content/fa"
+    languageName = "فا"
+    title = "وبلاگ سجاد"
+    weight = 1
+    dir = "rtl"
+    [languages.fa.params]
+      tagline = "کد مود اینا..."
 
 [author]
   name = "سجاد هاشمیان"
   homepage = "https://hashemian.me/"
+  github = "sijad"
 
 [params]
-  desc = "کد مود اینا..."
-  displaymenu = true
-  github = "https://github.com/sijad"
-
-[[menu.main]]
-    name = "خانه"
-    pre = ""
-    weight = -110
-    identifier = "home"
-    url = "/"
-
-[[menu.main]]
-    name = "درباره"
-    pre = ""
-    weight = -100
-    identifier = "about"
-    url = "/about/"
+  tagline = ""
