@@ -14,9 +14,11 @@ var months = [
 ];
 
 document.querySelectorAll("[dir=\"rtl\"] time").forEach(function(e) {
-  var datetime = e.getAttribute("datetime").split("-").map(function(t) {
-    return parseInt(t, 10);
-  });
-  var j = toJalaali(datetime[0], datetime[1], datetime[2]);
-  e.innerText = j.jd + " " + months[j.jm] + " " + j.jy;
+  var datetime = e.getAttribute("datetime");
+  if (!datetime) {
+    return;
+  }
+  datetime = new Date(datetime);
+  var j = toJalaali(datetime);
+  e.innerText = j.jd + " " + months[j.jm-1] + " " + j.jy;
 });
