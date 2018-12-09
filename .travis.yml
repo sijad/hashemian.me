@@ -7,7 +7,6 @@ addons:
   apt:
     packages:
       - python-pygments
-      - libstdc++6
 
 before_script:
   - wget https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_extended_0.52_Linux-64bit.tar.gz -O hugo.tar.gz
@@ -22,7 +21,6 @@ deploy:
   skip_cleanup: true
   local_dir: public
   github_token: $GITHUB_TOKEN
-  keep-history: true
   fqdn: hashemian.me
   on:
     branch: master
