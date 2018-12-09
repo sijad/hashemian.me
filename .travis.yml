@@ -7,8 +7,9 @@ addons:
       - python-pygments
 
 before_script:
-  - wget https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-ARM64.tar.gz -O hugo.tar.gz
+  - wget https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.tar.gz -O hugo.tar.gz
   - tar -xvf hugo.tar.gz
+  - chmod +x ./hugo
 
 script:
   - ./hugo
