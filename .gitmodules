@@ -4,4 +4,5 @@
 	branch = gh-pages
 [submodule "themes/kiera"]
 	path = themes/kiera
-	url = https://github.com/avianto/hugo-kiera.git
+	url = https://github.com/sijad/hugo-kiera.git
+	branch = multilingual
