@@ -1,3 +1,8 @@
+@import '_mixins';
+
+@include font-face(Vazir, /fonts/Vazir-WOL, normal, normal, eot woff2 woff ttf);
+@include font-face(Vazir, /fonts/Vazir-Bold-WOL, bold, normal, eot woff2 woff ttf);
+
 @import "normalize";
 @import "syntax";
 
@@ -5,12 +10,12 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: "Tahoma", serif;
+  font-family: "Vazir", serif;
   color: #333333;
 }
 
 h1, h2, h3, h4, h5, h6, time {
-  font-family: "Tahoma", sans-serif;
+  font-family: "Vazir", sans-serif;
 }
 
 #container {
