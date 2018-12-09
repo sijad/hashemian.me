@@ -1,7 +1,3 @@
-[submodule "public"]
-	path = public
-	url = git@github.com:sijad/sijad.github.io.git
-	branch = gh-pages
 [submodule "themes/kiera"]
 	path = themes/kiera
 	url = https://github.com/sijad/hugo-kiera.git
