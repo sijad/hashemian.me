@@ -1,4 +1,5 @@
 @import "normalize";
+@import "syntax";
 
 body {
   margin: 0;
@@ -122,35 +123,12 @@ h1, h2, h3, h4, h5, h6, time {
     }
     article {
       pre {
-        background-color: #ffffcc;
+        direction: ltr;
         overflow-x: auto;
         padding: 0.8em;
         font-size: 0.9em;
-        box-shadow: 0 -1px 0 #bbbbbb inset;
         code {
           font-size: 0.9em;
-        }
-      }
-      p {
-        code {
-          padding: 0.2em;
-          background-color: #ffcccc;
-          font-size: 0.9em;
-        }
-        kbd {
-          display: inline-block;
-          padding: 0.2em 0.3em;
-          font-size: 0.8em;
-          line-height: 1em;
-          color: #555555;
-          vertical-align: middle;
-          background-color: #fcfcfc;
-          border-width: 1px;
-          border-style: solid;
-          border-color: #cccccc #cccccc #bbbbbb;
-          border-image: none;
-          border-radius: 3px;
-          box-shadow: 0 -1px 0 #bbbbbb inset;
         }
       }
     }

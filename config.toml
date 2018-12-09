@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "sajjad's blog"
 theme = "kiera"
 
+pygmentsUseClassic=true
+pygmentsCodeFences=true
+
 [languages]
   [languages.en]
     contentDir = "content/en"
