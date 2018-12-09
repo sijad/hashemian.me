@@ -5,6 +5,7 @@ addons:
   apt:
     packages:
       - python-pygments
+      - libstdc++6
 
 before_script:
   - wget https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_extended_0.52_Linux-64bit.tar.gz -O hugo.tar.gz
