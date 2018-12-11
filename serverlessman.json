@@ -1,0 +1,74 @@
+{
+  "comments" : {
+    "provider": {
+      "name" : "github",
+      "owner": "sijad",
+      "repo": "hashemian.me",
+      "branch": "master",
+      "moderation": true
+    },
+    "output": {
+      "format": "yaml",
+      "path": "data/comments/{$lang}/{$parent}/{$reply_to}/comment-{TIME_UNIX_NANO}.yml"
+    },
+    "fields": [
+      {
+        "name":"id",
+        "default": "{UUID}",
+        "input": false,
+        "type": "uuid",
+        "required": true
+      },
+      {
+        "name": "lang",
+        "default": "en",
+        "options": ["en", "fa"],
+        "save": false
+      },
+      {
+        "name":"parent",
+        "required": true,
+        "save": false,
+        "type": "slug"
+      },
+      {
+        "name": "name",
+        "required": true
+      },
+      {
+        "name": "body",
+        "required": true
+      },
+      {
+        "name": "reply_to",
+        "save": false,
+        "type": "uuid"
+      },
+      {
+        "name": "email_md5",
+        "input_name": "email",
+        "transformer": "md5",
+        "type": "slug",
+        "type": "email"
+      },
+      {
+        "name": "email_encrypted",
+        "input_name": "email",
+        "transformer": "encrypt",
+        "type": "email"
+      },
+      {
+        "name": "date",
+        "default": "{ISO_DATE}",
+        "required": true,
+        "input": false
+      },
+      {
+        "name": "g-recaptcha-response",
+        "save": false,
+        "required": true,
+        "type": "recaptcha_v2"
+      }
+    ]
+  }
+}
