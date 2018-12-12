@@ -1,0 +1,15 @@
+[comment]
+one = "One Comment"
+other = "{{.Count}} Comments"
+
+[noComment]
+other = "No Comment"
+
+[yourName]
+other = "Your name..."
+
+[writeSomthing]
+other = "Write somthing..."
+
+[submit]
+other = "Submit"

@@ -1,0 +1,30 @@
+{{ $entryId := .File.ContentBaseName }}
+{{ $lang := .Lang }}
+<section class="comments">
+  {{ with (index $.Site.Data "comments" $lang $entryId) }}
+    <h3>{{ T "comment" (len .) }}</h3>
+    {{ range $index, $comment := . }}
+      {{ if isset . "id" }}
+      <article class="media">
+        <img src="https://www.gravatar.com/avatar/{{ .email }}?s=100" alt="{{ .name }} image">
+        <div class="media-body">
+          <h5>{{ .name }}</h5>
+          <time class="post-date" datetime="{{ dateFormat "2006-01-02T15:04:05Z07:00" .date }}">{{ dateFormat "Jan 2, 2006" .date }}</time>
+          <p>{{ .body }}</p>
+        </div>
+      </article>
+      {{ end }}
+    {{ end }}
+  {{ else }}
+    <h3>{{ T "noComment" }}</h3>
+  {{ end }}
+  <form action="https://serverlessman.hashemian.me/submit" method="POST">
+    <input type="hidden" name="property" value="comments">
+    <input type="hidden" name="parent" value="{{ $entryId }}">
+    <input type="hidden" name="lang" value="{{ $lang }}">
+    <input type="hidden" name="g-recaptcha-response" value="TODO">
+    <input type="text" name="name" placeholder="{{ T "yourName" }}">
+    <textarea name="body" placeholder="{{ T "writeSomthing" }}"></textarea>
+    <input type="submit" value="{{ T "submit" }}">
+  </form>
+</section>

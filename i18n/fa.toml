@@ -1,0 +1,15 @@
+[comment]
+one = "یک نظر"
+other = "{{.Count}} نظر"
+
+[noComment]
+other = "بدون نظر"
+
+[yourName]
+other = "نام شما..."
+
+[writeSomthing]
+other = "چیزی بنویسید..."
+
+[submit]
+other = "ارسال"

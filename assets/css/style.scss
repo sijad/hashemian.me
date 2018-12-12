@@ -367,3 +367,49 @@ ul.pagination {
   width: 1.2em;
   box-shadow: none;
 }
+
+.media {
+  display: flex;
+  align-items: flex-start;
+
+  h5 {
+    margin: 0;
+  }
+
+  time {
+    color: #666666;
+    font-size: 0.7em;
+  }
+
+  img {
+    margin-right: 1em;
+    [dir="rtl"] & {
+      margin-right: 0;
+      margin-left: 1em;
+    }
+    width: 64px;
+    height: 64px;
+  }
+
+  .media-body {
+    flex: 1;
+    margin: 0 0 1.5em;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.comments {
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+}
