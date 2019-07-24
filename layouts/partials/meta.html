@@ -1,4 +1,6 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="{{ .Site.Params.tagline }}" />
+<meta name="description" content="{{if .IsHome}}{{ $.Site.Params.tagline }}{{else}}{{.Summary | truncate 120}}{{end}}" />
 <meta name="author" content="{{ .Params.Author | default .Site.Author.name }}" />
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
