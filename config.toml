@@ -1,6 +1,6 @@
 baseURL = "https://hashemian.me/"
 languageCode = "en-us"
-title = "sajjad's blog"
+title = "Sajjad Hashemian"
 theme = "kiera"
 
 pygmentsUseClassic=true
@@ -15,7 +15,7 @@ pygmentsCodeFences=true
   languageCode = "fa-ir"
     contentDir = "content/fa"
     languageName = "فا"
-    title = "وبلاگ سجاد"
+    title = "سجاد هاشمیان"
     weight = 1
     dir = "rtl"
     [languages.fa.params]
