@@ -17,7 +17,7 @@ Hi 👋 my name is Sajjad! co-finder of [karjoo.plus](https://karjoo.plus), open
 ### My Experiences
 
 * JavaScript & TypeScript <sup>thousands of hours</sub>
-* React <sup>thousands of hours</sub>
+* React * React Native <sup>thousands of hours</sub>
 * PHP & MySQL <sup>thousands of hours</sub>
 * GraphQL <sup>hundreds of hours</sub>
 * Golang <sup>hundreds of hours</sub>
