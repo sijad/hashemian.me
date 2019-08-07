@@ -5,7 +5,7 @@ menu: "main"
 meta: "false"
 ---
 
-Hi 👋 my name is Sajjad! co-finder of [karjoo.plus](https://karjoo.plus), open-source enthusiasm, full-stack Programmer, Security researcher.
+Hi 👋 my name is Sajjad! co-founder of [karjoo.plus](https://karjoo.plus), open-source enthusiasm, full-stack Programmer, Security researcher.
 
 ### My Areas of interest
 
