@@ -1,4 +1,0 @@
-[submodule "themes/kiera"]
-	path = themes/kiera
-	url = https://github.com/sijad/hugo-kiera.git
-	branch = multilingual

@@ -1,0 +1,179 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+html {
+  --bg: #000;
+  --color: #fff;
+
+  background: var(--bg);
+  color: var(--color);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 16px;
+
+  @media (width < 768px) {
+    font-size: 14px;
+  }
+
+  @media (width < 480px) {
+    font-size: 12px;
+  }
+}
+
+body {
+  overflow: hidden;
+  &:after {
+    content: "";
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background: currentcolor;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    clip-path: inset(50%);
+
+    .is-light & {
+      clip-path: none;
+    }
+  }
+}
+
+a {
+  color: currentcolor;
+  text-decoration: none;
+}
+
+ul {
+  margin: 4rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  li {
+    display: block;
+    margin-left: 0.5rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  a {
+    display: flex;
+  }
+}
+
+div {
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1 {
+  font-family: "Londrina Solid", cursive;
+  font-size: 6.25rem;
+  text-transform: uppercase;
+  width: min-content;
+  margin-bottom: 0.2em;
+  line-height: 1;
+  opacity: 0;
+
+  @media (width < 768px) {
+    font-size: 5.5rem;
+  }
+
+  &:before {
+    font-family: "Londrina Sketch", cursive;
+    content: "Hi, I’m";
+    display: block;
+    font-size: 2.5rem;
+    margin: 0 0 0.2em;
+  }
+}
+
+p {
+  font-size: 1.875rem;
+  margin: 0;
+  opacity: 0;
+}
+
+h1,
+p {
+  > span {
+    clip-path: inset(100%);
+    display: inline-block;
+
+    > span {
+      display: inline-block;
+      transform: translateY(150%);
+    }
+  }
+}
+
+path {
+  fill: currentcolor;
+}
+
+.toggle-dark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  padding: 1rem;
+  border: none;
+  color: currentcolor;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  svg {
+    width: 1.3125rem;
+    height: 1.3125rem;
+  }
+}
+
+a,
+button {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    mix-blend-mode: difference;
+    border-radius: 99px;
+    transform: scale(0);
+    transform-origin: center;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  svg {
+    mix-blend-mode: difference;
+  }
+
+  &:hover {
+    &:after {
+      transform: scale(1);
+    }
+  }
+}
