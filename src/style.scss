@@ -115,7 +115,7 @@ p {
 h1,
 p {
   > span {
-    clip-path: inset(100%);
+    clip-path: inset(0);
     display: inline-block;
 
     > span {
