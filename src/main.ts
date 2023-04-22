@@ -75,7 +75,7 @@ function revealWords() {
         transform: ["translateY(150%)", "translateY(0%)"],
       },
       {
-        delay: 250 + i * 80,
+        delay: i * 80,
         duration: 400,
         fill: "forwards",
         easing: "cubic-bezier(0.65, 0, 0.35, 1)",
