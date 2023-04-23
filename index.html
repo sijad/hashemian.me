@@ -32,12 +32,11 @@
 
     <script>
       function applyTheme() {
-        const isLight =
-          localStorage.theme === "light" ||
-          (!("theme" in localStorage) &&
-            window.matchMedia("(prefers-color-scheme: light)").matches);
+        if (localStorage.theme) {
+          const isLight = localStorage.theme === "light";
 
-        document.documentElement.classList.toggle("is-light", isLight);
+          document.documentElement.classList.toggle("is-light", isLight);
+        }
       }
 
       applyTheme();
