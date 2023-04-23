@@ -95,7 +95,6 @@ h1 {
   text-transform: uppercase;
   margin-bottom: 0.2em;
   line-height: 1;
-  opacity: 0;
 
   @media (width < 768px) {
     font-size: 5.5rem;
@@ -113,18 +112,36 @@ h1 {
 p {
   font-size: 1.875rem;
   margin: 0;
-  opacity: 0;
 }
 
 h1,
 p {
+  @keyframes slideIn {
+    from {
+      transform: translateY(150%);
+    }
+
+    to {
+      transform: translateY(0%);
+    }
+  }
+
   > span {
     clip-path: inset(0);
     display: inline-block;
 
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) {
+        > span {
+          animation-delay: $i * 0.08s;
+        }
+      }
+    }
+
     > span {
       display: inline-block;
       transform: translateY(150%);
+      animation: slideIn 0.4s forwards cubic-bezier(0.65, 0, 0.35, 1);
     }
   }
 }

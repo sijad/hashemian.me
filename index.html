@@ -1,3 +1,13 @@
+<!--
+<%
+  function split(txt) {
+    return txt
+      .split(" ")
+      .map((w) => `<span><span>${w}</span></span>`)
+      .join(" ");
+  }
+%>
+?-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,20 +49,11 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Londrina+Sketch&family=Londrina+Solid&display=swap"
       rel="stylesheet"
     />
-
-    <noscript>
-      <style>
-        h1,
-        p {
-          opacity: 1;
-        }
-      </style>
-    </noscript>
   </head>
   <body>
     <div>
-      <h1>Sajjad Hashemian</h1>
-      <p>Fullstack web and web3 developer</p>
+      <h1><%- split("Sajjad Hashemian"); %></h1>
+      <p><%- split("Fullstack web and web3 developer"); %></p>
       <ul>
         <li>
           <a href="https://github.com/sijad/" target="_blank">
