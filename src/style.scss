@@ -16,8 +16,10 @@ html {
 
   background: var(--bg);
   color: var(--color);
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Barlow Condensed", "Gill Sans", "Gill Sans MT", Calibri,
+    "Trebuchet MS", sans-serif;
   font-size: 16px;
+  line-height: 1.2;
 
   @media (width < 768px) {
     font-size: 14px;
@@ -82,13 +84,15 @@ div {
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-width: 30rem;
+  width: 100%;
 }
 
 h1 {
-  font-family: "Londrina Solid", cursive;
+  font-family: "Londrina Solid", Impact, Haettenschweiler, "Arial Narrow Bold",
+    sans-serif;
   font-size: 6.25rem;
   text-transform: uppercase;
-  width: min-content;
   margin-bottom: 0.2em;
   line-height: 1;
   opacity: 0;
@@ -98,7 +102,7 @@ h1 {
   }
 
   &:before {
-    font-family: "Londrina Sketch", cursive;
+    font-family: "Londrina Sketch", "Arial Narrow Bold";
     content: "Hi, I’m";
     display: block;
     font-size: 2.5rem;
