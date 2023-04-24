@@ -8,7 +8,10 @@ export default defineConfig({
     VitePluginInjectPreload({
       files: [
         {
-          match: /.*/,
+          match: /.*latin-400.*\.woff2$/
+        },
+        {
+          match: /.*\.(css|js)$/,
         },
       ],
       injectTo: "custom",
