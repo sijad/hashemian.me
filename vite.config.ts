@@ -8,11 +8,18 @@ export default defineConfig({
     VitePluginInjectPreload({
       files: [
         {
-          match: /.*latin-400.*\.woff2$/
+          match: /.*\.css$/,
+          attributes: {
+            type: undefined,
+          }
         },
         {
-          match: /.*\.(css|js)$/,
-        },
+          match: /.*\.js$/,
+          attributes: {
+            rel: 'modulepreload',
+            type: undefined,
+          }
+        }
       ],
       injectTo: "custom",
     }),
