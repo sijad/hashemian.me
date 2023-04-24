@@ -151,6 +151,21 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.39.0.tgz#58b536bcc843f4cd1e02a7e6171da5c040f4d44b"
   integrity sha512-kf9RB0Fg7NZfap83B3QOqOGg9QmD9yBudqQXzzOtn3i4y7ZUXe5ONeW34Gwi+TxhH4mvj72R1Zc300KUMa9Bng==
 
+"@fontsource/barlow-condensed@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/barlow-condensed/-/barlow-condensed-4.5.9.tgz#5088998a644f04cedeecb65a633877dbfadca7b6"
+  integrity sha512-vhxHtTw4y3R6kErgOVb4wkQ6H+znGNK+G9J7R/pFZ6uE6lxdyIR1t7fG0tgEJIrdA0otLLyiVSwtZbQRHmexaA==
+
+"@fontsource/londrina-sketch@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/londrina-sketch/-/londrina-sketch-4.5.9.tgz#5907495e593356a9f564b4680d5c93c293b9039f"
+  integrity sha512-GkNuBjaaznQKZzEW6YDp5JyxDv9yKgHUBlkIM9P28Rkj7vzXEjQnJnYD2yN+JbLxvlj0DySKgXwmY4mG/gR6qg==
+
+"@fontsource/londrina-solid@^4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/londrina-solid/-/londrina-solid-4.5.11.tgz#7cf5db4ee5779a660b43f254f4892ce4074ebe0a"
+  integrity sha512-SbM/TMxDH8eXlSyGeQ/bVz6MUHHj6FiQXnZujUr4cyK27smZPpLXoJCjB9uChJaqQ23TsgctQsGRnuHuwml1kw==
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
@@ -1588,6 +1603,18 @@ micromatch@^4.0.4:
     braces "^3.0.2"
     picomatch "^2.3.1"
 
+mime-db@1.52.0:
+  version "1.52.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.52.0.tgz#bbabcdc02859f4987301c856e3387ce5ec43bf70"
+  integrity sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==
+
+mime-types@^2.1.35:
+  version "2.1.35"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.35.tgz#381a871b62a734450660ae3deee44813f70d959a"
+  integrity sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==
+  dependencies:
+    mime-db "1.52.0"
+
 minimatch@^3.0.4, minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.1.2.tgz#19cd194bfd3e428f049a70817c038d89ab4be35b"
@@ -2277,6 +2304,13 @@ vite-plugin-ejs@^1.6.4:
   integrity sha512-23p1RS4PiA0veXY5/gHZ60pl3pPvd8NEqdBsDgxNK8nM1rjFFDcVb0paNmuipzCgNP/Y0f/Id22M7Il4kvZ2jA==
   dependencies:
     ejs "^3.1.8"
+
+vite-plugin-inject-preload@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-inject-preload/-/vite-plugin-inject-preload-1.3.1.tgz#511d5a66964ce2fbaead6aba41eba625dd6e64fe"
+  integrity sha512-ESLexLaTl7hThHXaabGz902A+Xgu9tTONZKUT0LRCdqtRlcXbuB3gFjIsmVmZvozr+eS9ntutZfrakCFb9ocCA==
+  dependencies:
+    mime-types "^2.1.35"
 
 vite@^4.3.0:
   version "4.3.1"

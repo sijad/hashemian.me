@@ -1,3 +1,6 @@
+import "@fontsource/londrina-solid/400.css";
+import "@fontsource/londrina-sketch/400.css";
+import "@fontsource/barlow-condensed/400.css";
 import "./style.scss";
 
 let anim: Animation | null = null;
