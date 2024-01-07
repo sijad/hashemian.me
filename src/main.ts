@@ -2,6 +2,7 @@ import "@fontsource/londrina-solid/400.css";
 import "@fontsource/londrina-sketch/400.css";
 import "@fontsource/barlow-condensed/400.css";
 import "./style.scss";
+import "./bg";
 
 let anim: Animation | null = null;
 
@@ -44,6 +45,7 @@ function handleToggleTheme(el: HTMLElement) {
 
   anim.addEventListener("finish", function () {
     if (anim && anim === this) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).applyTheme();
 
       anim = null;
@@ -55,4 +57,10 @@ const toggleButton = document.querySelector("button");
 
 toggleButton?.addEventListener("click", (e) => {
   handleToggleTheme(e.currentTarget as HTMLElement);
+});
+
+document.fonts.ready.then(() => {
+  requestAnimationFrame(() => {
+    document.body.classList.add("fonts-loaded");
+  });
 });

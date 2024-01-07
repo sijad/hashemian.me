@@ -32,6 +32,7 @@ html {
 
 body {
   overflow: hidden;
+  margin: 0;
   &:after {
     content: "";
     width: 100vw;
@@ -114,34 +115,29 @@ p {
   margin: 0;
 }
 
-h1,
-p {
-  @keyframes slideIn {
-    from {
-      transform: translateY(150%);
-    }
+.word {
+  clip-path: inset(0);
+  display: inline-block;
 
-    to {
-      transform: translateY(0%);
+  @for $i from 1 through 12 {
+    &:nth-child(#{$i}) {
+      > span {
+        transition-delay: $i * 0.1s;
+      }
     }
   }
 
   > span {
-    clip-path: inset(0);
     display: inline-block;
+    transform: translateY(150%);
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+}
 
-    @for $i from 1 through 12 {
-      &:nth-child(#{$i}) {
-        > span {
-          animation-delay: $i * 0.08s;
-        }
-      }
-    }
-
-    > span {
-      display: inline-block;
-      transform: translateY(150%);
-      animation: slideIn 0.4s forwards cubic-bezier(0.65, 0, 0.35, 1);
+body.fonts-loaded {
+  .word {
+    span {
+      transform: translateY(0%);
     }
   }
 }
