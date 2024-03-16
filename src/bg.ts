@@ -8,7 +8,7 @@ let rects: {
   y: number;
   delay: number;
   duration: number;
-  a: number;
+  c: [number, number, number, number];
   row: number;
   col: number;
 }[] = [];
@@ -23,10 +23,18 @@ let mouseY = -1;
 let smoothMouseX = 0;
 let smoothMouseY = 0;
 let img: ImageData;
+let tID = 0;
 
 function onMouseMove(e: MouseEvent) {
+  clearTimeout(tID);
+
   mouseX = e.pageX;
   mouseY = e.pageY;
+
+  tID = setTimeout(() => {
+    mouseX = -1;
+    mouseY = -1;
+  }, 350);
 }
 
 window.addEventListener(
@@ -72,7 +80,7 @@ function onResize() {
       y: row * SPACE * SIZE,
       delay: Math.random() * 15000,
       duration: Math.random() * 5000 + 1000,
-      a: 25,
+      c: [255, 255, 255, 25],
       row,
       col,
     });
@@ -80,6 +88,30 @@ function onResize() {
 
   img = ctx.createImageData(width, height);
 }
+
+const colors = [
+  [26, 188, 156], // Turquoise
+  [46, 204, 113], // Emerald
+  [52, 152, 219], // Peter River
+  [155, 89, 182], // Amethyst
+  [52, 73, 94], // Wet Asphalt
+  [22, 160, 133], // Green Sea
+  [39, 174, 96], // Nephritis
+  [41, 128, 185], // Belize Hole
+  [142, 68, 173], // Wisteria
+  [44, 62, 80], // Midnight Blue
+  [241, 196, 15], // Sun Flower
+  [230, 126, 34], // Carrot
+  [231, 76, 60], // Alizarin
+  [236, 240, 241], // Clouds
+  [149, 165, 166], // Concrete
+  [243, 156, 18], // Orange
+  [211, 84, 0], // Pumpkin
+  [192, 57, 43], // Pomegranate
+  [189, 195, 199], // Silver
+  [127, 140, 141], // Asbestos
+  [254, 174, 188],
+];
 
 let then = performance.now() * -20;
 function animate(now: number) {
@@ -109,32 +141,38 @@ function animate(now: number) {
     const delta = diff % time;
     const finished = delta > time;
 
-    let alpha = delta > r.delay && !finished ? 50 : 25;
+    const c = r.c;
 
-    if (mouseX != -1 && Math.random() > 0.9) {
-      const d = Math.hypot(smoothMouseX - r.x, smoothMouseY - r.y);
-      if (d < dd * Math.random()) {
-        alpha = 100 * Math.random() + 25;
-      }
+    if (!finished && c[3] > 50) {
+      c[3] -= 3;
+    } else {
+      c[0] = 255;
+      c[1] = 255;
+      c[2] = 255;
+      c[3] = delta > r.delay ? 50 : 25;
     }
 
-    if (r.a > 50) {
-      r.a -= 1;
-      alpha = r.a;
+    if (mouseX != -1 && c[0] === 255 && Math.random() > 0.5) {
+      const d = Math.hypot(smoothMouseX - r.x, smoothMouseY - r.y);
+      if (d < dd * Math.random()) {
+        const newC = colors[Math.floor(Math.random() * colors.length)];
+        c[0] = newC[0];
+        c[1] = newC[1];
+        c[2] = newC[2];
+        c[3] = 200 * Math.random() + 25;
+      }
     }
 
     for (let j = 0; j <= SIZE; j++) {
       for (let k = 0; k <= SIZE; k++) {
         // const n = (r.x + j + (r.y + k + j) * width) * 4;
         const n = (r.x + j + (r.y + k) * width) * 4;
-        data[n] = 255;
-        data[n + 1] = 255;
-        data[n + 2] = 255;
-        data[n + 3] = alpha;
+        data[n] = c[0];
+        data[n + 1] = c[1];
+        data[n + 2] = c[2];
+        data[n + 3] = c[3];
       }
     }
-
-    r.a = alpha;
   }
 
   ctx.putImageData(img, 0, 0);
