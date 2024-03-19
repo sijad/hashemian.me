@@ -104,12 +104,9 @@ const colors = [
   [230, 126, 34], // Carrot
   [231, 76, 60], // Alizarin
   [236, 240, 241], // Clouds
-  [149, 165, 166], // Concrete
   [243, 156, 18], // Orange
   [211, 84, 0], // Pumpkin
   [192, 57, 43], // Pomegranate
-  [189, 195, 199], // Silver
-  [127, 140, 141], // Asbestos
   [254, 174, 188],
 ];
 
@@ -123,13 +120,13 @@ function animate(now: number) {
   const data = img.data;
 
   if (mouseX !== -1) {
-    smoothMouseX += (mouseX - smoothMouseX) * 0.13;
-    smoothMouseY += (mouseY - smoothMouseY) * 0.13;
+    smoothMouseX += (mouseX - smoothMouseX) * 0.15;
+    smoothMouseY += (mouseY - smoothMouseY) * 0.15;
   }
 
   const dd = Math.min(
     Math.max(
-      Math.hypot(smoothMouseX - mouseX, smoothMouseY - mouseY) * 0.7,
+      Math.hypot(smoothMouseX - mouseX, smoothMouseY - mouseY) * 0.3,
       25
     ),
     140
@@ -143,23 +140,25 @@ function animate(now: number) {
 
     const c = r.c;
 
-    if (!finished && c[3] > 50) {
-      c[3] -= 3;
-    } else {
+    if (!finished && c[0] !== 255) {
+      c[3] -= c[3] * 0.02;
+    }
+
+    if (c[3] <= 50) {
       c[0] = 255;
       c[1] = 255;
       c[2] = 255;
       c[3] = delta > r.delay ? 50 : 25;
     }
 
-    if (mouseX != -1 && c[0] === 255 && Math.random() > 0.5) {
+    if (mouseX != -1 && c[0] === 255 && Math.random() > 0.4) {
       const d = Math.hypot(smoothMouseX - r.x, smoothMouseY - r.y);
       if (d < dd * Math.random()) {
         const newC = colors[Math.floor(Math.random() * colors.length)];
         c[0] = newC[0];
         c[1] = newC[1];
         c[2] = newC[2];
-        c[3] = 200 * Math.random() + 25;
+        c[3] = 230 * Math.random() + 25;
       }
     }
 
