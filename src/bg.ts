@@ -50,7 +50,7 @@ window.addEventListener(
   { once: true }
 );
 
-canvas.addEventListener("touchstart", (e) => {
+window.addEventListener("touchstart", (e) => {
   e.preventDefault();
 
   onMouseMove(e.touches[0]);
