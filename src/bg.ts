@@ -25,7 +25,7 @@ let smoothMouseY = 0;
 let img: ImageData;
 let tID = 0;
 
-function onMouseMove(e: MouseEvent) {
+function onMouseMove(e: { pageX: number; pageY: number }) {
   clearTimeout(tID);
 
   mouseX = e.pageX;
@@ -49,6 +49,17 @@ window.addEventListener(
   },
   { once: true }
 );
+
+canvas.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+
+  onMouseMove(e.touches[0]);
+
+  smoothMouseX = mouseX;
+  smoothMouseY = mouseY;
+});
+
+window.addEventListener("touchmove", (e) => onMouseMove(e.touches[0]));
 
 function onResize() {
   rects = [];
