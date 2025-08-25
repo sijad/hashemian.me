@@ -1,7 +1,26 @@
 const canvas = document.createElement("canvas");
 const ctx = canvas.getContext("2d")!;
 
-document.body.append(canvas);
+const colors = [
+  [26, 188, 156], // Turquoise
+  [46, 204, 113], // Emerald
+  [52, 152, 219], // Peter River
+  [155, 89, 182], // Amethyst
+  [52, 73, 94], // Wet Asphalt
+  [22, 160, 133], // Green Sea
+  [39, 174, 96], // Nephritis
+  [41, 128, 185], // Belize Hole
+  [142, 68, 173], // Wisteria
+  [44, 62, 80], // Midnight Blue
+  [241, 196, 15], // Sun Flower
+  [230, 126, 34], // Carrot
+  [231, 76, 60], // Alizarin
+  [236, 240, 241], // Clouds
+  [243, 156, 18], // Orange
+  [211, 84, 0], // Pumpkin
+  [192, 57, 43], // Pomegranate
+  [254, 174, 188],
+];
 
 let rects: {
   x: number;
@@ -24,104 +43,9 @@ let smoothMouseX = 0;
 let smoothMouseY = 0;
 let img: ImageData;
 let tID = 0;
-
-function onMouseMove(e: { pageX: number; pageY: number }) {
-  clearTimeout(tID);
-
-  mouseX = e.pageX;
-  mouseY = e.pageY;
-
-  tID = setTimeout(() => {
-    mouseX = -1;
-    mouseY = -1;
-  }, 350);
-}
-
-window.addEventListener(
-  "mousemove",
-  (e) => {
-    onMouseMove(e);
-
-    smoothMouseX = mouseX;
-    smoothMouseY = mouseY;
-
-    window.addEventListener("mousemove", onMouseMove);
-  },
-  { once: true }
-);
-
-window.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-
-  onMouseMove(e.touches[0]);
-
-  smoothMouseX = mouseX;
-  smoothMouseY = mouseY;
-});
-
-window.addEventListener("touchmove", (e) => onMouseMove(e.touches[0]));
-
-function onResize() {
-  rects = [];
-  width = window.innerWidth;
-  height = window.innerHeight;
-
-  if (width < 768) {
-    SIZE = 2;
-    SPACE = 2;
-  } else {
-    SIZE = 3;
-    SPACE = 2;
-  }
-
-  canvas.width = width;
-  canvas.height = height;
-
-  ctx.fillStyle = "#fff";
-
-  columns = Math.ceil(width / SIZE / SPACE);
-  rows = Math.ceil(height / SIZE / SPACE);
-
-  for (let i = 0; i < columns * rows; i++) {
-    const col = i % columns;
-    const row = Math.floor(i / columns);
-
-    rects.push({
-      x: col * SPACE * SIZE,
-      y: row * SPACE * SIZE,
-      delay: Math.random() * 15000,
-      duration: Math.random() * 5000 + 1000,
-      c: [255, 255, 255, 25],
-      row,
-      col,
-    });
-  }
-
-  img = ctx.createImageData(width, height);
-}
-
-const colors = [
-  [26, 188, 156], // Turquoise
-  [46, 204, 113], // Emerald
-  [52, 152, 219], // Peter River
-  [155, 89, 182], // Amethyst
-  [52, 73, 94], // Wet Asphalt
-  [22, 160, 133], // Green Sea
-  [39, 174, 96], // Nephritis
-  [41, 128, 185], // Belize Hole
-  [142, 68, 173], // Wisteria
-  [44, 62, 80], // Midnight Blue
-  [241, 196, 15], // Sun Flower
-  [230, 126, 34], // Carrot
-  [231, 76, 60], // Alizarin
-  [236, 240, 241], // Clouds
-  [243, 156, 18], // Orange
-  [211, 84, 0], // Pumpkin
-  [192, 57, 43], // Pomegranate
-  [254, 174, 188],
-];
-
+let mID = 0;
 let then = performance.now() * -20;
+
 function animate(now: number) {
   requestAnimationFrame(animate);
 
@@ -188,10 +112,109 @@ function animate(now: number) {
   ctx.putImageData(img, 0, 0);
 }
 
+window.addEventListener(
+  "mousemove",
+  (e) => {
+    mID && cancelManualMove();
+
+    onMouseMove(e);
+
+    smoothMouseX = mouseX;
+    smoothMouseY = mouseY;
+
+    mID && cancelAnimationFrame(mID);
+
+    window.addEventListener("mousemove", onMouseMove);
+  },
+  { once: true }
+);
+
+canvas.addEventListener("touchstart", (e) => {
+  mID && cancelManualMove();
+
+  e.preventDefault();
+
+  onMouseMove(e.touches[0]);
+
+  smoothMouseX = mouseX;
+  smoothMouseY = mouseY;
+});
+
+window.addEventListener("touchmove", (e) => onMouseMove(e.touches[0]));
+
+function onResize() {
+  rects = [];
+  width = window.innerWidth;
+  height = window.innerHeight;
+
+  if (width < 768) {
+    SIZE = 2;
+    SPACE = 2;
+  } else {
+    SIZE = 3;
+    SPACE = 2;
+  }
+
+  canvas.width = width;
+  canvas.height = height;
+
+  ctx.fillStyle = "#fff";
+
+  columns = Math.ceil(width / SIZE / SPACE);
+  rows = Math.ceil(height / SIZE / SPACE);
+
+  for (let i = 0; i < columns * rows; i++) {
+    const col = i % columns;
+    const row = Math.floor(i / columns);
+
+    rects.push({
+      x: col * SPACE * SIZE,
+      y: row * SPACE * SIZE,
+      delay: Math.random() * 15000,
+      duration: Math.random() * 5000 + 1000,
+      c: [255, 255, 255, 25],
+      row,
+      col,
+    });
+  }
+
+  img = ctx.createImageData(width, height);
+}
+
+function onMouseMove(e: { pageX: number; pageY: number }) {
+  clearTimeout(tID);
+
+  mouseX = e.pageX;
+  mouseY = e.pageY;
+
+  tID = setTimeout(() => {
+    mouseX = -1;
+    mouseY = -1;
+  }, 350);
+}
+
+function manualMouseMove(t: number) {
+  mID = requestAnimationFrame(manualMouseMove);
+
+  t *= 0.001;
+
+  mouseX = width * 0.5 + Math.cos(t * 2.1) * Math.cos(t * 0.8) * width * 0.5;
+  mouseY =
+    height * 0.5 +
+    Math.sin(t * 3.1) * Math.tan(Math.sin(t * 0.8)) * height * 0.5;
+}
+
+function cancelManualMove() {
+  cancelAnimationFrame(mID);
+  mID = 0;
+}
+
 function start() {
   onResize();
+  requestAnimationFrame(manualMouseMove);
   requestAnimationFrame(animate);
 }
 
+document.body.append(canvas);
 addEventListener("resize", onResize);
-document.fonts.ready.then(start);
+start();
